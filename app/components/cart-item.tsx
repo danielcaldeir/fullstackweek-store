@@ -6,7 +6,7 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ArrowLeftIcon, ArrowRightIcon, TrashIcon } from "lucide-react";
-// import { CartContext, CartProduct } from "@/app/providers/cart";
+import { CartContext, CartProduct } from "@/app/providers/cart";
 import { useContext } from "react";
 
 interface CartItemProps {

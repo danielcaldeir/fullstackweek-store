@@ -6,9 +6,9 @@
 import { useContext } from "react";
 import { Badge } from "@/components/ui/badge";
 import { ShoppingCartIcon } from "lucide-react";
-// import { CartContext } from "@/app/providers/cart";
-// import CartItem from "@/components/cart-item";
-// import { computeProductTotalPrice } from "@/helpers/product";
+import { CartContext } from "@/app/providers/cart";
+import CartItem from "@/app/components/cart-item";
+import { computeProductTotalPrice } from "@/app/helpers/product";
 import { Separator } from "@/components/ui/separator";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
