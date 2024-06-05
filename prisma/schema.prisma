@@ -1,0 +1,74 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Account {
+  id                String  @id
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  User              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Category {
+  id        String    @id
+  createdAt DateTime  @default(now())
+  name      String
+  slug      String    @unique
+  imageUrl  String
+  Product   Product[]
+}
+
+model Product {
+  id                 String   @id
+  createdAt          DateTime @default(now())
+  name               String
+  slug               String   @unique
+  basePrice          Decimal  @db.Decimal(8, 2)
+  categoryId         String
+  imageUrls          String[]
+  description        String
+  discountPercentage Int      @default(0)
+  Category           Category @relation(fields: [categoryId], references: [id])
+}
+
+model Session {
+  id           String   @id
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  User         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id            String    @id
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  Account       Account[]
+  Session       Session[]
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
