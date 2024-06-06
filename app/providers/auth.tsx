@@ -1,6 +1,6 @@
 "use client";
 
-// import {SessionProvider, SessionProviderProps} from 'next-auth/react';
+import {SessionProvider, SessionProviderProps} from 'next-auth/react';
 
 type Props = {
     children?: React.ReactNode;
