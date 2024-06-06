@@ -18,16 +18,16 @@ import { Button } from "@/components/ui/button";
 const Cart = () => {
   const { products, subtotal, total, totalDiscount } = useContext(CartContext);
 
-  const handleFinishPurchaseClick = async () => {
-    const checkout = await createCheckout(products);
+  // const handleFinishPurchaseClick = async () => {
+  //   const checkout = await createCheckout(products);
 
-    const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
+  //   const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
-    // stripe?.redirectToCheckout
-    stripe?.redirectToCheckout({
-      sessionId: checkout.id,
-    });
-  };
+  //   // stripe?.redirectToCheckout
+  //   stripe?.redirectToCheckout({
+  //     sessionId: checkout.id,
+  //   });
+  // };
 
   return (
     <div className="flex h-full flex-col gap-8">
@@ -91,7 +91,7 @@ const Cart = () => {
 
             <Button 
               className="mt-7 font-bold uppercase" 
-              onClick={handleFinishPurchaseClick}
+              // onClick={handleFinishPurchaseClick}
             >
               Finalizar compra
             </Button>
